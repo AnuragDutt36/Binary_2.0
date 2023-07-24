@@ -1,4 +1,4 @@
-# Binary 2.0 Java - Online Paid Solution Code
+# Binary 2.0 Java - Solution Code
 
 ![Binary 2.0 Java](Img/64216620af09d6f5fb568f80.png)
 
