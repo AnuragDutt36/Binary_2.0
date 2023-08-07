@@ -1,6 +1,6 @@
 # Binary 2.0 Java - Solution Code
 
-![Binary 2.0 Java](Img/64216620af09d6f5fb568f80.png)
+<img src="Img/64216620af09d6f5fb568f80.png" width="1000">
 
 This repository contains the solution code for the Binary 2.0 Java online paid course. Binary 2.0 Java is an advanced Java programming course that covers various topics, including data structures, algorithms, object-oriented programming, design patterns, and more.
 
