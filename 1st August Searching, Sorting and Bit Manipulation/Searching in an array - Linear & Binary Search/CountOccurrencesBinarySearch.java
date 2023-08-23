@@ -8,6 +8,7 @@ public class CountOccurrencesBinarySearch {
         }
 
         int lastOccurrence = findLastOccurrence(arr, target);
+        System.out.println(lastOccurrence + " " + firstOccurrence);
         return lastOccurrence - firstOccurrence + 1;
     }
 
