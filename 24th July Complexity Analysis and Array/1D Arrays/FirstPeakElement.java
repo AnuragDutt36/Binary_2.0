@@ -10,6 +10,9 @@ public class FirstPeakElement {
         System.out.println("Output 2: " + peak2);
     }
 
+    // Time complexity : O(n)
+    // Space complexity : O(1)
+    
     public static int findFirstPeakElement(int[] arr) {
         if (arr.length < 3) {
             return -1; // No peak element if the array has less than 3 elements

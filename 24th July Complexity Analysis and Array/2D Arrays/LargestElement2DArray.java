@@ -1,6 +1,8 @@
 import java.util.Scanner;
 
 public class LargestElement2DArray {
+    // Time complexity: O(n^2);
+    // Space complexity : O(1);
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
 

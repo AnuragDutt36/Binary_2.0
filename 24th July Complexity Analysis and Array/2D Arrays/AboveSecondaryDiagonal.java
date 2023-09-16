@@ -1,6 +1,9 @@
 import java.util.Scanner;
 
 public class AboveSecondaryDiagonal {
+    // Time complexity : O(n^2);
+    // Space complexity : O(1);
+
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
 
@@ -19,11 +22,10 @@ public class AboveSecondaryDiagonal {
 
         System.out.print("Elements above the secondary diagonal: ");
 
-        for (int i = 0; i < size; i++) {
-            for (int j = 0; j < size; j++) {
-                if (i < size - j - 1) {
-                    System.out.print(matrix[i][j] + " ");
-                }
+        for (int i = 0; i < size - 1; i++) {
+            int aboveSecond = size - (i + 1);
+            for (int j = 0; j < aboveSecond; j++) {
+                System.out.print(matrix[i][j] + " ");
             }
         }
         System.out.println();

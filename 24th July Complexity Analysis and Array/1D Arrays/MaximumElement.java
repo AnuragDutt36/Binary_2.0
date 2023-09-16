@@ -8,8 +8,10 @@ public class MaximumElement {
 
         System.out.println("Output 1: " + max1);
         System.out.println("Output 2: " + max2);
-    }
+    }   
 
+    // Time complexity : O(n)
+    // Space complexity : O(1)
     public static int findMaximumElement(int[] arr) {
         int max = arr[0];
         for (int i = 1; i < arr.length; i++) {

@@ -9,7 +9,9 @@ public class SumOfEvenIndices {
         System.out.println("Output 1: " + sum1);
         System.out.println("Output 2: " + sum2);
     }
-
+    
+    // Time complexity : O(n)
+    // Space complexity : O(1)
     public static int calculateSumOfEvenIndices(int[] arr) {
         int sum = 0;
         for (int i = 0; i < arr.length; i += 2) {

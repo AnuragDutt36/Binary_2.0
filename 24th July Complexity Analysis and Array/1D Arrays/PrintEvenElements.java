@@ -10,6 +10,8 @@ public class PrintEvenElements {
         printEvenElements(arr2);
     }
 
+    // Time complexity : O(n)
+    // Space complexity : O(1)
     public static void printEvenElements(int[] arr) {
         for (int num : arr) {
             if (num % 2 == 0) {

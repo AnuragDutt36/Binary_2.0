@@ -10,6 +10,9 @@ public class SecondLargestElement {
         System.out.println("Output 2: " + secondLargest2);
     }
 
+    // Time complexity : O(n)
+    // Space complexity : O(1)
+    
     public static int findSecondLargest(int[] arr) {
         int largest = Integer.MIN_VALUE;
         int secondLargest = Integer.MIN_VALUE;
