@@ -48,7 +48,6 @@ public class CountOccurrencesBinarySearch {
                 high = mid - 1;
             }
         }
-
         return result;
     }
 
