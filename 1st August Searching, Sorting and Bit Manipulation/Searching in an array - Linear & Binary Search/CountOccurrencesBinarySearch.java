@@ -54,7 +54,7 @@ public class CountOccurrencesBinarySearch {
     public static void main(String[] args) {
         int[] arr = { 2, 5, 5, 5, 6, 6, 8, 9, 9, 9 };
         int target1 = 5;
-        int target2 = 6;
+        int target2 = 9;
         int count1 = countOccurrences(arr, target1);
         int count2 = countOccurrences(arr, target2);
         System.out.println("Output 1: Target " + target1 + " occurs " + count1 + " times");
