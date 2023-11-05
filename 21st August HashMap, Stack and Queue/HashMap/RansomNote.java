@@ -13,6 +13,8 @@ public class RansomNote {
         for (char ch : magazine.toCharArray()) {
             magazineMap.put(ch, magazineMap.getOrDefault(ch, 0) + 1);
         }
+
+        System.out.println(magazineMap);
         
         for (char ch : ransomNote.toCharArray()) {
             if (!magazineMap.containsKey(ch) || magazineMap.get(ch) <= 0) {
@@ -20,7 +22,7 @@ public class RansomNote {
             }
             magazineMap.put(ch, magazineMap.get(ch) - 1);
         }
-        
+        // System.out.println(magazineMap);
         return true;
     }
 }
