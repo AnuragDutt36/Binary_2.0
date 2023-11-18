@@ -1,48 +1,48 @@
+
 public class EqualSumSubsets {
-
-    public static void main(String[] args) {
-        int[] arr = { 1, 3, 2, 2 };
-        int k = 2;
-        System.out.println(canPartitionKSubsets(arr, k));
-    }
-
-    public static boolean canPartitionKSubsets(int[] arr, int k) {
-        int totalSum = 0;
-        for (int num : arr) {
-            totalSum += num;
-        }
-
-        if (totalSum % k != 0) {
-            return false; // If total sum is not divisible by k, it's not possible to form equal sum
-                          // subsets
-        }
-
-        int targetSum = totalSum / k;
-        boolean[] visited = new boolean[arr.length];
-
-        return backtrack(arr, visited, 0, k, 0, targetSum);
-    }
-
-    public static boolean backtrack(int[] arr, boolean[] visited, int startIndex, int k, int currentSum,
-            int targetSum) {
-        if (k == 0) {
-            return true; // All subsets have been formed
-        }
-
-        if (currentSum == targetSum) {
-            return backtrack(arr, visited, 0, k - 1, 0, targetSum);
-        }
+    public static boolean helper(int[] arr, int[] vis, int startIndex, int curr_sum, int target, int k) {
+        if (k == 1)
+            return true;
+        if (curr_sum > target)
+            return false;
+        if (curr_sum == target)
+            return helper(arr, vis, startIndex, curr_sum, target, k - 1);
 
         for (int i = startIndex; i < arr.length; i++) {
-            if (!visited[i] && currentSum + arr[i] <= targetSum) {
-                visited[i] = true;
-                if (backtrack(arr, visited, i + 1, k, currentSum + arr[i], targetSum)) {
+            if (vis[i] == -1) {
+                vis[i] = 1;
+                if (helper(arr, vis, startIndex, curr_sum + arr[i], target, k) == true)
                     return true;
-                }
-                visited[i] = false;
+                vis[i] = -1;
             }
         }
-
         return false;
+    }
+
+    public static boolean canPartition(int[] arr, int k) {
+        int n = arr.length;
+        int[] vis = new int[n];
+        for (int i = 0; i < n; i++) {
+            vis[i] = -1;
+        }
+        int sum = 0;
+        for (int i = 0; i < n; i++) {
+            sum += arr[i];
+        }
+
+        if (sum % k != 0) {
+            return false;
+        }
+        return helper(arr, vis, 0, 0, sum / k, k);
+    }
+
+    public static void main(String[] args) {
+        int[] arr = { 1, 2, 2, 3 };
+        int k = 3;
+
+        if (canPartition(arr, k) == true) {
+            System.out.println("Yes, it is possible to partition the array.");
+        } else
+            System.out.println("No, it is not possible to partition.");
     }
 }

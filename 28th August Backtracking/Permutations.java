@@ -1,35 +1,31 @@
-import java.util.ArrayList;
-import java.util.List;
+import java.util.*;
 
 public class Permutations {
-
-    public static void main(String[] args) {
-        int[] arr = {1, 2, 3};
-        List<List<Integer>> permutations = findPermutations(arr);
-        
-        for (List<Integer> permutation : permutations) {
-            System.out.println(permutation);
-        }
-    }
-
-    public static List<List<Integer>> findPermutations(int[] arr) {
-        List<List<Integer>> result = new ArrayList<>();
-        backtrack(arr, new ArrayList<>(), result);
-        return result;
-    }
-
-    public static void backtrack(int[] arr, List<Integer> current, List<List<Integer>> result) {
-        if (current.size() == arr.length) {
-            result.add(new ArrayList<>(current));
+    public static void backtrack(List<List<Integer>> result, List<Integer> perm, int[] arr) {
+        if (perm.size() == arr.length) {
+            result.add(new ArrayList<>(perm));
             return;
         }
 
-        for (int num : arr) {
-            if (!current.contains(num)) {
-                current.add(num);
-                backtrack(arr, current, result);
-                current.remove(current.size() - 1);
+        for (int i = 0; i < arr.length; i++) {
+            if (perm.contains(arr[i])) {
+                System.out.println(arr[i]);
+                continue;
             }
+            perm.add(arr[i]);
+            backtrack(result, perm, arr);
+            perm.remove(perm.size() - 1);
         }
+    }                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                     
+
+    public static List<List<Integer>> permute(int[] arr) {
+        List<List<Integer>> result = new ArrayList<>();
+        backtrack(result, new ArrayList<>(), arr);
+        return result;
+    }
+
+    public static void main(String args[]) {
+        int[] num = { 1, 2, 3 };
+        System.out.println(permute(num));
     }
 }

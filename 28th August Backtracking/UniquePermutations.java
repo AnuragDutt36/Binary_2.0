@@ -1,42 +1,50 @@
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
+import java.util.*;
 
 public class UniquePermutations {
-
-    public static void main(String[] args) {
-        int[] nums1 = {1, 1, 2};
-        List<List<Integer>> result1 = findUniquePermutations(nums1);
-        System.out.println(result1);
-
-        int[] nums2 = {1, 2, 3};
-        List<List<Integer>> result2 = findUniquePermutations(nums2);
-        System.out.println(result2);
-    }
-
-    public static List<List<Integer>> findUniquePermutations(int[] nums) {
-        Arrays.sort(nums); // Sort the input array to handle duplicates
-        List<List<Integer>> result = new ArrayList<>();
-        backtrack(nums, new boolean[nums.length], new ArrayList<>(), result);
-        return result;
-    }
-
-    public static void backtrack(int[] nums, boolean[] used, List<Integer> current, List<List<Integer>> result) {
-        if (current.size() == nums.length) {
-            result.add(new ArrayList<>(current));
+    // Function to generate unique permutations
+    public static void backtrack(List<List<Integer>> result, List<Integer> perm, int[] arr, boolean[] used) {
+        // If the current permutation's length equals the array length, add it to the
+        // result or skip identical elements
+        if (perm.size() == arr.length && !result.contains(perm)) {
+            result.add(new ArrayList<>(perm));
             return;
         }
 
-        for (int i = 0; i < nums.length; i++) {
-            if (used[i] || (i > 0 && nums[i] == nums[i - 1] && !used[i - 1])) {
-                continue; // Skip duplicates or already used numbers
+        // Loop through the array elements to generate permutations
+        for (int i = 0; i < arr.length; i++) {
+            // Skip used elements or
+            if (used[i]) {
+                continue;
             }
-
+            // Mark the current element as used
             used[i] = true;
-            current.add(nums[i]);
-            backtrack(nums, used, current, result);
+            // Add the current element to the permutation
+            perm.add(arr[i]);
+            // Recursively generate the next elements in the permutation
+            backtrack(result, perm, arr, used);
+            // Backtrack: remove the last element to explore other possibilities
             used[i] = false;
-            current.remove(current.size() - 1);
+            perm.remove(perm.size() - 1);
         }
+    }
+
+    // Function to generate unique permutations for input array containing
+    // duplicates
+    public static List<List<Integer>> permuteUnique(int[] arr) {
+        List<List<Integer>> result = new ArrayList<>();
+        Arrays.sort(arr); // Sort the array to handle duplicates
+        boolean[] used = new boolean[arr.length];
+        // Generate unique permutations using backtracking
+        backtrack(result, new ArrayList<>(), arr, used);
+        return result;
+    }
+
+    // Main method to test unique permutation generation
+    public static void main(String args[]) {
+        int[] num = { 1, 1, 2 };
+        // Generate unique permutations for the input array
+        List<List<Integer>> uniquePermutations = permuteUnique(num);
+        // Print the unique permutations
+        System.out.println(uniquePermutations);
     }
 }
