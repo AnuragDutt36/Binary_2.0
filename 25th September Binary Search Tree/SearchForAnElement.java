@@ -1,4 +1,5 @@
-public class Question1 {
+
+public class SearchForAnElement {
     public static class TreeNode {
         TreeNode root;
         TreeNode left, right;

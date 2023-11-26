@@ -1,6 +1,8 @@
 import java.util.ArrayList;
+import java.util.HashSet;
+import java.util.Set;
 
-public class Question2 {
+public class PairOfGivenSum {
     public static class TreeNode {
         TreeNode root;
         TreeNode left, right;
@@ -17,10 +19,8 @@ public class Question2 {
         }
 
         if (num < root.val) {
-            // traverse towards the left subtree
             root.left = insertingBSTElements(root.left, num);
         } else {
-            // traverse towards the right subtree
             root.right = insertingBSTElements(root.right, num);
         }
         return root;
@@ -37,22 +37,30 @@ public class Question2 {
         return result;
     }
 
-    public static int kthSmallest(TreeNode root, int k) {
+    public static boolean findingPair(TreeNode root, int sum, Set<Integer> set) {
         ArrayList<Integer> result = inOrderTraversal(root, new ArrayList<>());
-        return result.get(result.size() - k);
+        for (int i = 0; i < result.size(); i++) {
+            if (result.contains(sum - result.get(i))) {
+                System.out.println("Pair found : (" + result.get(i) + ", " + (sum - result.get(i)) + ")");
+                return true;
+            }
+        }
+        return false;
     }
 
     public static void main(String args[]) {
-        int[] node = { 15, 10, 20, 8, 12, 16, 25 };
+        int[] nodes = { 15, 10, 20, 8, 12, 20, 30, 6, 9, 18, 22 };
 
         TreeNode root = null;
-        for (int i : node) {
+        for (int i : nodes) {
             root = insertingBSTElements(root, i);
         }
 
-        int kth = 2;
+        int sum = 10;
+        Set<Integer> set = new HashSet<>();
 
-        int ans = kthSmallest(root, kth);
-        System.out.println("Output: " + ans);
+        if (!findingPair(root, sum, set)) {
+            System.out.println("Pair does not exist.");
+        }
     }
 }

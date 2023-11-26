@@ -1,4 +1,4 @@
-public class Question5 {
+public class LowestCommonAncestor {
     static class TreeNode {
         TreeNode root;
         int val;
