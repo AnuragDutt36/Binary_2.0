@@ -1,9 +1,11 @@
 public class Rob {
    public static int rob(int[] nums) {
-        if (nums.length == 0)
+        if (nums.length == 0) {
             return 0;
-        if (nums.length < 2)
+        }
+        if (nums.length < 2) {
             return nums[0];
+        }
         
         int[] startFromFirstHouse = new int[nums.length + 1];
         int[] startFromSecondHouse = new int[nums.length + 1];
