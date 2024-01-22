@@ -68,9 +68,9 @@ public class Question1 {
 
         int key2 = 13;
         if (list2.search(key2)) {
-            System.out.println("Example 2 - Output: Yes");
+            System.out.println("Example 2 - Output:Yes");
         } else {
-            System.out.println("Example 2 - Output: No");
+            System.out.println("Example 2 - Output:No");
         }
     }
 }
